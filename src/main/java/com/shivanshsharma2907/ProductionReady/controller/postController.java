@@ -2,6 +2,7 @@ package com.shivanshsharma2907.ProductionReady.controller;
 
 import com.shivanshsharma2907.ProductionReady.DTO.PostDTO;
 import com.shivanshsharma2907.ProductionReady.service.PostService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,14 +33,14 @@ public class postController {
     }
 
     @PostMapping(path = "/newPosts")
-    public ResponseEntity<PostDTO> createNewPost(@RequestBody PostDTO inputPost){
+    public ResponseEntity<PostDTO> createNewPost(@RequestBody @Valid PostDTO inputPost){
         PostDTO postDTO = postService.createNewPost(inputPost);
         return new ResponseEntity<>(postDTO,HttpStatus.CREATED);
 
     }
 
     @PutMapping(path = "/updatedPost/{ID}")
-    public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO inputPost , @PathVariable Long ID){
+    public ResponseEntity<PostDTO> updatePost(@RequestBody @Valid PostDTO inputPost , @PathVariable Long ID){
         return ResponseEntity.ok(postService.updatePost(inputPost,ID));
     }
 

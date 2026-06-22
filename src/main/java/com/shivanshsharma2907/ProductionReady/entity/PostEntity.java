@@ -2,6 +2,7 @@ package com.shivanshsharma2907.ProductionReady.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "posts")
+@Audited
 public class PostEntity extends AuditableEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
